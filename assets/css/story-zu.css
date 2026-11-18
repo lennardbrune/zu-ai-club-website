@@ -8803,3 +8803,80 @@ h2 .brush { margin-left: 0.14em; }
 	.zu-hero ul.actions li { width: 100%; }
 	.zu-hero ul.actions .button { width: 100%; }
 }
+
+/* ==========================================================
+   Mehr eigenes Design (Feedback Xaver, 18.11.2026):
+   Wachsmalstrich der alten Club-Seite als wiederkehrendes Element
+   ========================================================== */
+
+/* Wachsmalstrich hinter einem Wort: dunkle Schrift auf blauem Strich, wie im Club-Logo */
+.scribble { position: relative; display: inline-block; white-space: nowrap; z-index: 0; color: #17181A; padding: 0 0.08em; margin: 0 0.06em; }
+.scribble::before { content: ""; position: absolute; z-index: -1; left: -0.34em; right: -0.26em; top: -0.16em; bottom: -0.22em; background: url("../../images/scribble-blue-dicht.webp") center / 100% 100% no-repeat; transform: rotate(-1.5deg); pointer-events: none; }
+/* Auf dem blauen Kopf: dunkle Schrift auf weissem Strich (wie das Logo auf hellem Grund) */
+.scribble.light { color: #17181A; }
+.scribble.light::before { background-image: url("../../images/scribble-white-dicht.webp"); }
+
+/* Kopf: grosser Strich als Akzent, Logo groesser */
+.zu-hero .claim { position: relative; overflow: hidden; }
+.zu-hero .claim::after { content: ""; position: absolute; right: -9%; top: 50%; width: 52%; aspect-ratio: 1200 / 702; transform: translateY(-50%) rotate(-10deg); background: url("../../images/scribble-white.webp") center / contain no-repeat; opacity: 0.13; pointer-events: none; }
+.zu-hero .claim .inner { position: relative; z-index: 1; }
+.zu-hero .claim h1 .scribble { margin-left: 0.2em; margin-right: 0.36em; }
+.zu-hero .logo { width: 20rem; max-width: 330px; margin: 0 0 2.75rem -0.6rem; }
+
+/* Mission */
+.mission .inner { position: relative; }
+.mission .statement { font-size: clamp(2rem, 4.2vw, 3.8rem); line-height: 1.08; max-width: 19ch; margin: 0 auto 2rem auto; }
+.mission .lead { margin: 0 auto; max-width: 40rem; font-size: 1.05rem; }
+
+/* Schrittnummern auf Wachsmalstrich */
+.kicker.step { display: flex; align-items: center; gap: 1rem; }
+.kicker.step .num { position: relative; z-index: 0; display: inline-block; font-size: 2.6rem; line-height: 1; font-weight: 800; letter-spacing: -0.03em; color: #17181A; padding: 0 0.1em; }
+.kicker.step .num::before { content: ""; position: absolute; z-index: -1; left: -0.35em; right: -0.3em; top: -0.18em; bottom: -0.22em; background: url("../../images/scribble-blue-dicht.webp") center / 100% 100% no-repeat; transform: rotate(-4deg); }
+.kicker.step { gap: 1.4rem; margin-bottom: 1.75rem; }
+.spotlight .content .kicker.step b { display: none; }
+
+/* Ueberschriften mit Strich: etwas Luft */
+h2 .scribble { margin-left: 0.12em; margin-right: 0.12em; }
+
+/* Logos in den Galerie-Bildtexten (weiss) und Partnerleiste (dunkel) */
+.caption .logos { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 1.1rem; margin-bottom: 0.9rem !important; }
+.caption .logos .lg { height: 1.05rem; width: auto; filter: brightness(0) invert(1); opacity: 0.95; }
+.caption .logos .lg-lovable { height: 0.85rem; }
+.caption .logos .lg-vjal { height: 2.2rem; }
+.caption .logos .lg-cf { height: 0.95rem; }
+.caption .logos .lg-42 { height: 1.15rem; }
+.partners-label { margin-top: 3rem; }
+.partners { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1.5rem 2.25rem; max-width: 64rem; margin: 0 auto; }
+.partners .lg { height: 1.4rem; width: auto; filter: brightness(0); opacity: 0.68; transition: opacity 0.2s ease; }
+.partners .lg:hover { opacity: 1; }
+.partners .lg-lovable { height: 1.05rem; }
+.partners .lg-vjal { height: 2.5rem; }
+.partners .lg-minimax { height: 2.1rem; }
+.partners .lg-cf { height: 1.25rem; }
+.partners .lg-42 { height: 1.5rem; }
+.guests { margin-top: 2.5rem; }
+
+/* Fuss: Logo groesser */
+.footer-logo { width: 13rem; max-width: 250px; }
+
+@media screen and (max-width: 736px) {
+	.zu-hero .claim::after { width: 90%; right: -35%; top: 30%; }
+	.zu-hero .logo { width: 13rem; }
+	.partners { gap: 1.25rem 1.75rem; }
+	.partners .lg { height: 1.15rem; }
+	.partners .lg-vjal { height: 2rem; }
+	.partners .lg-minimax { height: 1.7rem; }
+	.partners .lg-lovable { height: 0.9rem; }
+}
+
+/* Galerie: Pfeile ohne Icon-Schrift, dezent immer sichtbar */
+.gallery.style2 > .forward, .gallery.style2 > .backward { opacity: 0.75; }
+.gallery.style2 > .forward:before, .gallery.style2 > .backward:before { font-family: "Cabinet Grotesk", sans-serif !important; font-weight: 400 !important; font-size: 4.5rem !important; color: #FBFAF7; }
+.gallery.style2 > .forward:before { content: "\203A" !important; }
+.gallery.style2 > .backward:before { content: "\2039" !important; }
+
+/* Zweite, gespiegelte Strichlage schliesst die Luecken der Wachsmalkreide */
+.scribble::after, .kicker.step .num::after { content: ""; position: absolute; z-index: -1; pointer-events: none; background: url("../../images/scribble-blue-dicht.webp") center / 100% 100% no-repeat; }
+.scribble::after { left: -0.28em; right: -0.3em; top: -0.12em; bottom: -0.18em; transform: scaleX(-1) rotate(-2deg); }
+.scribble.light::after { background-image: url("../../images/scribble-white-dicht.webp"); }
+.kicker.step .num::after { left: -0.3em; right: -0.32em; top: -0.14em; bottom: -0.2em; transform: scaleX(-1) rotate(-3deg); }
