@@ -8654,23 +8654,22 @@ h3 { font-size: 1.15rem; letter-spacing: -0.01em; }
 .brush.light { color: var(--blue-deep); }
 .svg-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
 
-/* Kopf: Verlauf links, Foto rechts */
-.banner.zu { min-height: min(100vh, 52rem); }
-.banner.zu .content {
+/* Kopf: Foto gross oben, darunter Claim auf blauem Verlauf */
+.zu-hero .claim {
 	background-image: linear-gradient(160deg, var(--blue-night) 0%, var(--blue-deep) 55%, var(--blue) 100%);
 }
-.banner.zu .content h1,
-.banner.zu .content p { color: var(--paper); }
-.banner.zu .content p.major { color: rgba(251, 250, 247, 0.86); max-width: 30em; }
-.banner.zu .logo { display: block; width: 12rem; max-width: 250px; height: auto; margin: 0 0 2.25rem -0.4rem; }
-.banner.zu .button {
+.zu-hero .claim h1,
+.zu-hero .claim p { color: var(--paper); }
+.zu-hero .claim p.major { color: rgba(251, 250, 247, 0.86); max-width: 30em; }
+.zu-hero .logo { display: block; width: 12rem; max-width: 250px; height: auto; margin: 0 0 2.25rem -0.4rem; }
+.zu-hero .button {
 	background-color: transparent;
 	box-shadow: inset 0 0 0 1px rgba(251, 250, 247, 0.7);
 	color: var(--paper) !important;
 }
-.banner.zu .button:hover { box-shadow: inset 0 0 0 1px var(--paper); background-color: rgba(251, 250, 247, 0.1); }
-.banner.zu .button.primary { background-color: var(--paper); color: var(--blue-deep) !important; box-shadow: none; }
-.banner.zu .button.primary:hover { background-color: #ffffff; }
+.zu-hero .button:hover { box-shadow: inset 0 0 0 1px var(--paper); background-color: rgba(251, 250, 247, 0.1); }
+.zu-hero .button.primary { background-color: var(--paper); color: var(--blue-deep) !important; box-shadow: none; }
+.zu-hero .button.primary:hover { background-color: #ffffff; }
 
 /* Zahlenband */
 .numbers { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; margin: 3rem 0 0 0; text-align: left; }
@@ -8731,8 +8730,7 @@ h3 { font-size: 1.15rem; letter-spacing: -0.01em; }
 @media screen and (max-width: 736px) {
 	h1 { font-size: 2.5rem; }
 	h2 { font-size: 1.85rem; }
-	.banner.zu { min-height: 0; }
-	.banner.zu .logo { width: 10rem; }
+	.zu-hero .logo { width: 10rem; }
 	.values { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
 	.team { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
 	.numbers .num { font-size: 2.4rem; }
@@ -8755,16 +8753,19 @@ h3 { font-size: 1.15rem; letter-spacing: -0.01em; }
 /* Sprache: jeder Text steht als .de und .en im HTML */
 html.lang-en .de, html:not(.lang-en) .en { display: none !important; }
 
-/* Kopf: Claim, darunter Logo, darunter Buttons, alles linksbuendig */
-.banner.zu .content { padding: 6rem 5rem 5rem 5rem; max-width: none; align-self: stretch; margin: 0; display: flex; flex-direction: column; justify-content: center; }
-.banner.zu .content h1 { font-size: clamp(2.6rem, 5vw, 5.2rem); line-height: 1.02; margin: 0 0 2.5rem 0; }
-.banner.zu .logo { width: 13rem; max-width: 250px; margin: 0 0 2.5rem -0.35rem; }
-.banner.zu ul.actions { flex-wrap: nowrap; margin-bottom: 0; }
-.banner.zu ul.actions li { flex-shrink: 0; }
+/* Kopf: Foto in voller Breite, darunter Claim, Logo und Buttons linksbuendig */
+.zu-hero { position: relative; }
+.zu-hero .photo { width: 100%; aspect-ratio: 2 / 1; max-height: 82vh; overflow: hidden; background: #101B26; }
+.zu-hero .photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 70%; }
+.zu-hero .claim .inner { width: 72rem; max-width: 100%; margin: 0 auto; padding: 4.5rem 3.5rem 4.5rem 3.5rem; }
+.zu-hero .claim h1 { font-size: clamp(2.6rem, 5.4vw, 5.6rem); line-height: 1.02; max-width: 17ch; margin: 0 0 2.75rem 0; }
+.zu-hero .logo { width: 13rem; max-width: 250px; margin: 0 0 2.5rem -0.35rem; }
+.zu-hero ul.actions { flex-wrap: nowrap; margin-bottom: 0; }
+.zu-hero ul.actions li { flex-shrink: 0; }
 
 /* Pinselstrich bei "alle": groesser als das Wort, kleiner Abstand zum Komma */
-.banner.zu h1 .brush { margin: 0 0.24em 0 0.16em; color: #1F3F8F; }
-.banner.zu h1 .brush svg { top: -0.17em; left: -0.2em; width: calc(100% + 0.4em); height: calc(100% + 0.32em); }
+.zu-hero h1 .brush { margin: 0 0.24em 0 0.16em; color: #1F3F8F; }
+.zu-hero h1 .brush svg { top: -0.17em; left: -0.2em; width: calc(100% + 0.4em); height: calc(100% + 0.32em); }
 
 /* Sprachumschalter */
 .lang-switch { position: fixed; top: 1.25rem; right: 1.25rem; z-index: 50; display: flex; gap: 0.15rem; padding: 0.2rem; background: rgba(251, 250, 247, 0.94); box-shadow: 0 0 0 1px #DCD7CB; border-radius: 2rem; }
@@ -8788,13 +8789,15 @@ h2 .brush { margin-left: 0.14em; }
 }
 
 @media screen and (max-width: 736px) {
-	.banner.zu .content { padding: 4.5rem 1.75rem 3rem 1.75rem; text-align: left; align-items: flex-start; }
-	.banner.zu .content h1 { text-align: left; }
-	.banner.zu ul.actions { width: 100%; }
-	.banner.zu .logo { width: 10rem; }
+	.zu-hero .photo { aspect-ratio: 3 / 2; max-height: none; }
+	.zu-hero .photo img { object-position: 50% 50%; }
+	.zu-hero .claim .inner { padding: 3rem 1.75rem 3rem 1.75rem; }
+	.zu-hero .logo { width: 10rem; }
 	.lang-switch { top: 0.75rem; right: 0.75rem; }
 }
 
 @media screen and (max-width: 480px) {
-	.banner.zu ul.actions { flex-wrap: wrap; }
+	.zu-hero ul.actions { flex-wrap: wrap; }
+	.zu-hero ul.actions li { width: 100%; }
+	.zu-hero ul.actions .button { width: 100%; }
 }
